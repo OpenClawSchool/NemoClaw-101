@@ -1,0 +1,419 @@
+root@nemoclaw-installed:~# curl -fsSL https://www.nvidia.com/nemoclaw.sh | bash
+
+   ███╗   ██╗███████╗███╗   ███╗ ██████╗  ██████╗██╗      █████╗ ██╗    ██╗
+   ████╗  ██║██╔════╝████╗ ████║██╔═══██╗██╔════╝██║     ██╔══██╗██║    ██║
+   ██╔██╗ ██║█████╗  ██╔████╔██║██║   ██║██║     ██║     ███████║██║ █╗ ██║
+   ██║╚██╗██║██╔══╝  ██║╚██╔╝██║██║   ██║██║     ██║     ██╔══██║██║███╗██║
+   ██║ ╚████║███████╗██║ ╚═╝ ██║╚██████╔╝╚██████╗███████╗██║  ██║╚███╔███╔╝
+   ╚═╝  ╚═══╝╚══════╝╚═╝     ╚═╝ ╚═════╝  ╚═════╝╚══════╝╚═╝  ╚═╝ ╚══╝╚══╝
+
+  Launch OpenClaw in an OpenShell sandbox.  v0.0.12
+
+
+[1/3] Node.js
+  ──────────────────────────────────────────────────
+[INFO]  Node.js found: v22.22.0
+[INFO]  Runtime OK: Node.js v22.22.0, npm 10.9.4
+
+[2/3] NemoClaw CLI
+  ──────────────────────────────────────────────────
+[INFO]  Installer payload is not a persistent source checkout — installing from GitHub…
+[INFO]  Installing NemoClaw from GitHub…
+[INFO]  Resolved install ref: latest
+  ✓  Cloning NemoClaw source
+  ✓  Preparing OpenClaw package
+  ✓  Installing NemoClaw dependencies
+  ✓  Building NemoClaw CLI modules
+  ✓  Building NemoClaw plugin
+  ✓  Linking NemoClaw CLI
+[INFO]  Created user-local shim at /root/.local/bin/nemoclaw
+[INFO]  Created user-local shim at /root/.local/bin/nemoclaw
+[INFO]  Verified: nemoclaw is available at /root/.local/bin/nemoclaw
+
+[3/3] Onboarding
+  ──────────────────────────────────────────────────
+
+  Detected container runtime: docker
+[WARN]  Host preflight found warnings.
+  - Install OpenShell: OpenShell is required before onboarding can create or manage a gateway.
+    Run the NemoClaw installer or `scripts/install-openshell.sh`.
+  - Review remote/headless UI settings: Headless Linux hosts often need explicit remote UI handling if you want browser access.
+    Set `CHAT_UI_URL` when remote browser access matters.
+[INFO]  Installer stdin is piped; attaching the usage notice to /dev/tty…
+
+  Third-Party Software Notice - NemoClaw Installer
+  ──────────────────────────────────────────────────
+  NemoClaw is licensed under Apache 2.0 and automatically
+  retrieves, accesses or interacts with third-party software
+  and materials, including by deploying OpenClaw in an
+  OpenShell sandbox. Those retrieved materials are not
+  distributed with this software and are governed solely
+  by separate terms, conditions and licenses.
+
+  You are solely responsible for finding, reviewing and
+  complying with all applicable terms, conditions, and
+  licenses, and for verifying the security, integrity and
+  suitability of any retrieved materials for your specific
+  use case.
+
+  This software is provided "AS IS", without warranty of
+  any kind. The author makes no representations or
+  warranties regarding any third-party software, and
+  assumes no liability for any losses, damages, liabilities
+  or legal consequences from your use or inability to use
+  this software or any retrieved materials. Use this
+  software and the retrieved materials at your own risk.
+
+  OpenClaw security guidance
+  https://docs.openclaw.ai/gateway/security
+
+  Type 'yes' to accept the NemoClaw license and and third-party software notice and continue [no]: yes
+[INFO]  Running nemoclaw onboard…
+[INFO]  Installer stdin is piped; attaching onboarding to /dev/tty…
+
+  NemoClaw Onboarding
+  ===================
+
+  [1/8] Preflight checks
+  ──────────────────────────────────────────────────
+  ✓ Docker is running
+  ✓ Container runtime: docker
+  openshell CLI not found. Installing...
+  ✓ openshell CLI: openshell 0.0.26
+  ✓ Port 8080 available (OpenShell gateway)
+  ✓ Port 18789 available (NemoClaw dashboard)
+  ⓘ No GPU detected — will use cloud inference
+  ✓ Memory OK: 15990 MB RAM + 0 MB swap
+
+  [2/8] Starting OpenShell gateway
+  ──────────────────────────────────────────────────
+  Using pinned OpenShell gateway image: ghcr.io/nvidia/openshell/cluster:0.0.26
+  Starting gateway cluster...
+  Still starting gateway cluster... (5s elapsed)
+  Still starting gateway cluster... (10s elapsed)
+  Still starting gateway cluster... (20s elapsed)
+  Still starting gateway cluster... (30s elapsed)
+  Still starting gateway cluster... (40s elapsed)
+  Still starting gateway cluster... (50s elapsed)
+  Installing OpenShell components...
+  Still installing OpenShell components... (60s elapsed)
+  Starting OpenShell gateway pod...
+  Waiting for gateway health...
+  Waiting for gateway health...
+  ✓ Gateway is healthy
+✓ Active gateway set to 'nemoclaw'
+
+  [3/8] Configuring inference (NIM)
+  ──────────────────────────────────────────────────
+
+  Inference options:
+    1) NVIDIA Endpoints
+    2) OpenAI
+    3) Other OpenAI-compatible endpoint
+    4) Anthropic
+    5) Other Anthropic-compatible endpoint
+    6) Google Gemini
+
+  Choose [1]: 1
+
+  ┌─────────────────────────────────────────────────────────────────┐
+  │  NVIDIA API Key required                                        │
+  │                                                                 │
+  │  1. Go to https://build.nvidia.com/settings/api-keys            │
+  │  2. Sign in with your NVIDIA account                            │
+  │  3. Click 'Generate API Key' button                             │
+  │  4. Paste the key below (starts with nvapi-)                    │
+  └─────────────────────────────────────────────────────────────────┘
+
+  NVIDIA API Key: **********************************************************************
+
+  Key saved to ~/.nemoclaw/credentials.json (mode 600)
+
+
+  Cloud models:
+    1) Nemotron 3 Super 120B (nvidia/nemotron-3-super-120b-a12b)
+    2) Kimi K2.5 (moonshotai/kimi-k2.5)
+    3) GLM-5 (z-ai/glm5)
+    4) MiniMax M2.5 (minimaxai/minimax-m2.5)
+    5) GPT-OSS 120B (openai/gpt-oss-120b)
+    6) Other...
+
+  Choose model [1]: 1
+  Chat Completions API available — OpenClaw will use openai-completions.
+  Using NVIDIA Endpoints with model: nvidia/nemotron-3-super-120b-a12b
+
+  [4/8] Setting up inference provider
+  ──────────────────────────────────────────────────
+✓ Active gateway set to 'nemoclaw'
+✓ Created provider nvidia-prod
+Gateway inference configured:
+
+  Route: inference.local
+  Provider: nvidia-prod
+  Model: nvidia/nemotron-3-super-120b-a12b
+  Version: 1
+  Timeout: 60s (default)
+  ✓ Inference route set: nvidia-prod / nvidia/nemotron-3-super-120b-a12b
+
+  NemoClaw will store the Brave API key in the sandbox agent config.
+  The sandboxed agent will be able to read that key.
+
+  Enable Brave Web Search? [y/N]: N
+
+  [5/8] Messaging channels
+  ──────────────────────────────────────────────────
+
+  Available messaging channels:
+    [1] ● telegram — Telegram bot messaging
+    [2] ○ discord — Discord bot messaging
+    [3] ○ slack — Slack bot messaging
+
+  Press 1-3 to toggle, Enter when done:
+
+  Create a bot via @BotFather on Telegram, then copy the token.
+  Telegram Bot Token: **********************************************
+  ✓ telegram token saved
+  Send /start to @userinfobot on Telegram to get your numeric user ID.
+  Telegram User ID (for DM access): robertnemo_bot
+  ✓ telegram user ID saved
+
+
+  [6/8] Creating sandbox
+  ──────────────────────────────────────────────────
+  Sandbox name (lowercase, starts with letter, hyphens ok) [my-assistant]:
+✓ Created provider my-assistant-telegram-bridge
+  Creating sandbox 'my-assistant' (this takes a few minutes on first run)...
+  Building sandbox image...
+  Building image openshell/sandbox-from:1775876601 from /tmp/nemoclaw-build-uHSDN8/Dockerfile
+  Step 1/45 : ARG BASE_IMAGE=ghcr.io/nvidia/nemoclaw/sandbox-base:latest
+  Step 2/45 : FROM node:22-slim@sha256:4f77a690f2f8946ab16fe1e791a3ac0667ae1c3575c3e4d0d4589e9ed5bfaf3d AS b...
+  Step 3/45 : ENV NPM_CONFIG_AUDIT=false     NPM_CONFIG_FUND=false     NPM_CONFIG_UPDATE_NOTIFIER=false
+  Step 4/45 : COPY nemoclaw/package.json nemoclaw/package-lock.json nemoclaw/tsconfig.json /opt/nemoclaw/
+  Step 5/45 : COPY nemoclaw/src/ /opt/nemoclaw/src/
+  Step 6/45 : WORKDIR /opt/nemoclaw
+  Step 7/45 : RUN npm ci && npm run build
+  Step 8/45 : FROM ${BASE_IMAGE}
+  Still building sandbox image... (50s elapsed)
+  Still building sandbox image... (60s elapsed)
+  Still building sandbox image... (75s elapsed)
+  Still building sandbox image... (90s elapsed)
+  Still building sandbox image... (105s elapsed)
+  Step 9/45 : RUN (apt-get remove --purge -y gcc gcc-12 g++ g++-12 cpp cpp-12 make         netcat-openbsd ne...
+  Still building sandbox image... (125s elapsed)
+  Step 10/45 : COPY --from=builder /opt/nemoclaw/dist/ /opt/nemoclaw/dist/
+  Step 11/45 : COPY nemoclaw/openclaw.plugin.json /opt/nemoclaw/
+  Step 12/45 : COPY nemoclaw/package.json nemoclaw/package-lock.json /opt/nemoclaw/
+  Step 13/45 : COPY nemoclaw-blueprint/ /opt/nemoclaw-blueprint/
+  Step 14/45 : WORKDIR /opt/nemoclaw
+  Step 15/45 : RUN npm ci --omit=dev
+  Step 16/45 : RUN mkdir -p /sandbox/.nemoclaw/blueprints/0.1.0     && cp -r /opt/nemoclaw-blueprint/* /sand...
+  Step 17/45 : COPY scripts/nemoclaw-start.sh /usr/local/bin/nemoclaw-start
+  Step 18/45 : RUN chmod 755 /usr/local/bin/nemoclaw-start
+  Step 19/45 : ARG NEMOCLAW_MODEL=nvidia/nemotron-3-super-120b-a12b
+  Step 20/45 : ARG NEMOCLAW_PROVIDER_KEY=inference
+  Step 21/45 : ARG NEMOCLAW_PRIMARY_MODEL_REF=inference/nvidia/nemotron-3-super-120b-a12b
+  Step 22/45 : ARG CHAT_UI_URL=http://127.0.0.1:18789
+  Step 23/45 : ARG NEMOCLAW_INFERENCE_BASE_URL=https://inference.local/v1
+  Step 24/45 : ARG NEMOCLAW_INFERENCE_API=openai-completions
+  Step 25/45 : ARG NEMOCLAW_INFERENCE_COMPAT_B64=e30=
+  Step 26/45 : ARG NEMOCLAW_WEB_CONFIG_B64=e30=
+  Step 27/45 : ARG NEMOCLAW_MESSAGING_CHANNELS_B64=WyJ0ZWxlZ3JhbSJd
+  Step 28/45 : ARG NEMOCLAW_MESSAGING_ALLOWED_IDS_B64=eyJ0ZWxlZ3JhbSI6WyJyb2JlcnRuZW1vX2JvdCJdfQ==
+  Step 29/45 : ARG NEMOCLAW_DISCORD_GUILDS_B64=e30=
+  Step 30/45 : ARG NEMOCLAW_DISABLE_DEVICE_AUTH=1
+  Step 31/45 : ARG NEMOCLAW_BUILD_ID=1775876601302
+  Step 32/45 : ARG NEMOCLAW_PROXY_HOST=10.200.0.1
+  Step 33/45 : ARG NEMOCLAW_PROXY_PORT=3128
+  Step 34/45 : ENV NEMOCLAW_MODEL=${NEMOCLAW_MODEL}     NEMOCLAW_PROVIDER_KEY=${NEMOCLAW_PROVIDER_KEY}     N...
+  Step 35/45 : WORKDIR /sandbox
+  Step 36/45 : USER sandbox
+  Step 37/45 : RUN python3 -c "import base64, json, os, secrets; from urllib.parse import urlparse; model = ...
+  Step 38/45 : RUN openclaw doctor --fix > /dev/null 2>&1 || true     && openclaw plugins install /opt/nemoc...
+  Still building sandbox image... (380s elapsed)
+  Still building sandbox image... (390s elapsed)
+  Still building sandbox image... (405s elapsed)
+  Still building sandbox image... (420s elapsed)
+  Step 39/45 : USER root
+  Step 40/45 : RUN mkdir -p /sandbox/.openclaw-data/logs         /sandbox/.openclaw-data/credentials        ...
+  Step 41/45 : RUN chown root:root /sandbox/.openclaw     && rm -rf /root/.npm /sandbox/.npm     && find /sa...
+  Still building sandbox image... (465s elapsed)
+  Step 42/45 : RUN sha256sum /sandbox/.openclaw/openclaw.json > /sandbox/.openclaw/.config-hash     && chmod...
+  Step 43/45 : RUN chown root:root /sandbox/.nemoclaw     && chmod 1755 /sandbox/.nemoclaw     && chown -R r...
+  Step 44/45 : ENTRYPOINT ["/usr/local/bin/nemoclaw-start"]
+  Step 45/45 : CMD ["/bin/bash"]
+  Built image openshell/sandbox-from:1775876601
+  Uploading image into OpenShell gateway...
+  Pushing image openshell/sandbox-from:1775876601 into gateway "nemoclaw"
+  [progress] Exported 100 MiB
+  [progress] Exported 200 MiB
+  [progress] Exported 300 MiB
+  [progress] Exported 400 MiB
+  [progress] Exported 500 MiB
+  [progress] Exported 600 MiB
+  [progress] Exported 700 MiB
+  [progress] Exported 800 MiB
+  [progress] Exported 900 MiB
+  [progress] Exported 1000 MiB
+  [progress] Exported 1100 MiB
+  [progress] Exported 1139 MiB
+  [progress] Uploaded to gateway
+  Still uploading image into OpenShell gateway... (620s elapsed)
+  Still uploading image into OpenShell gateway... (630s elapsed)
+  Still uploading image into OpenShell gateway... (645s elapsed)
+  Still uploading image into OpenShell gateway... (660s elapsed)
+  Still uploading image into OpenShell gateway... (675s elapsed)
+  Still uploading image into OpenShell gateway... (690s elapsed)
+  Image openshell/sandbox-from:1775876601 is available in the gateway.
+  Still uploading image into OpenShell gateway... (710s elapsed)
+  Waiting for sandbox to become ready...
+  Sandbox reported Ready before create stream exited; continuing.
+  Waiting for sandbox to become ready...
+  Waiting for NemoClaw dashboard to become ready...
+  Dashboard taking longer than expected to start. Continuing...
+! No active forward found for port 18789
+  Setting up sandbox DNS proxy...
+Setting up DNS proxy in pod 'my-assistant' (10.200.0.1:53 -> 10.42.0.2)...
+Defaulted container "agent" out of: agent, workspace-init (init)
+Defaulted container "agent" out of: agent, workspace-init (init)
+Defaulted container "agent" out of: agent, workspace-init (init)
+Defaulted container "agent" out of: agent, workspace-init (init)
+  [PASS] DNS forwarder running (pid=366): dns-proxy: 10.200.0.1:53 -> 10.42.0.2:53 pid=366
+  [PASS] resolv.conf -> nameserver 10.200.0.1
+  [PASS] iptables: UDP 10.200.0.1:53 ACCEPT rule present
+  [PASS] getent hosts github.com -> 140.82.114.3    github.com
+  DNS verification: 4 passed, 0 failed
+  ✓ Sandbox 'my-assistant' created
+
+  [7/8] Setting up OpenClaw inside sandbox
+  ──────────────────────────────────────────────────
+  ✓ OpenClaw gateway launched inside sandbox
+
+  [8/8] Policy presets
+  ──────────────────────────────────────────────────
+
+  Available policy presets:
+   > [ ] brave          — Brave Search API access
+     [ ] brew           — Homebrew (Linuxbrew) package manager access
+     [ ] discord        — Discord API, gateway, and CDN access
+     [ ] github         — GitHub.com and GitHub API access (git, gh)
+     [ ] huggingface    — Hugging Face Hub, LFS, and Inference API access
+     [ ] jira           — Jira and Atlassian Cloud access
+     [✓] npm            — npm and Yarn registry access
+     [ ] outlook        — Microsoft Outlook and Graph API access
+     [✓] pypi           — Python Package Index (PyPI) access
+     [ ] slack          — Slack API, Socket Mode, and webhooks access
+     [✓] telegram       — Telegram Bot API access
+
+  ↑/↓ j/k  move    Space  toggle    a  all/none    Enter  confirm
+
+  Widening sandbox egress — adding: pypi.org, files.pythonhosted.org
+✓ Policy version 3 submitted (hash: 3b94d69d2ea1)
+✓ Policy version 3 loaded (active version: 3)
+  Applied preset: pypi
+  Widening sandbox egress — adding: registry.npmjs.org, registry.yarnpkg.com
+✓ Policy version 4 submitted (hash: c67782e7c6cc)
+✓ Policy version 4 loaded (active version: 4)
+  Applied preset: npm
+  Widening sandbox egress — adding: api.telegram.org
+✓ Policy version 5 submitted (hash: 5aefdb031540)
+✓ Policy version 5 loaded (active version: 5)
+  Applied preset: telegram
+
+  ──────────────────────────────────────────────────
+  Sandbox      my-assistant (Landlock + seccomp + netns)
+  Model        nvidia/nemotron-3-super-120b-a12b (NVIDIA Endpoints)
+  NIM          not running
+  ──────────────────────────────────────────────────
+  Run:         nemoclaw my-assistant connect
+  Status:      nemoclaw my-assistant status
+  Logs:        nemoclaw my-assistant logs --follow
+
+  OpenClaw UI (tokenized URL; treat it like a password)
+  Port 18789 must be forwarded before opening this URL.
+  http://127.0.0.1:18789/#token=c9281cf49de551f7c7330e2cc0f054fafcf66d332a062d56f5b5d238ada3549e
+  ──────────────────────────────────────────────────
+
+[INFO]  === Installation complete ===
+
+  NemoClaw  (1593s)
+
+  Your OpenClaw Sandbox is live.
+  Sandbox in, break things, and tell us what you find.
+
+  Next:
+  $ source /root/.bashrc
+  $ nemoclaw my-assistant connect
+  sandbox@my-assistant$ openclaw tui
+
+  GitHub  https://github.com/nvidia/nemoclaw
+  Docs    https://docs.nvidia.com/nemoclaw/latest/
+
+root@nemoclaw-installed:~# source /root/.bashrc
+root@nemoclaw-installed:~# nemoclaw my-assistant connect
+sandbox@my-assistant:~$ ls -al
+total 28
+drwxr-xr-x  5 sandbox sandbox 4096 Apr 11 03:15 .
+drwxr-xr-x  1 root    root    4096 Apr 11 03:15 ..
+-rw-r--r--  1 sandbox sandbox  845 Apr 11 03:15 .bashrc
+drwxr-xr-t  7 sandbox sandbox 4096 Apr 11 03:11 .nemoclaw
+drwxr-xr-x  2 root    root    4096 Apr 11 03:11 .openclaw
+drwxr-xr-x 16 sandbox sandbox 4096 Apr  9 23:41 .openclaw-data
+-rw-r--r--  1 sandbox sandbox  845 Apr 11 03:15 .profile
+-rw-r--r--  1 root    root       0 Apr 11 03:15 .workspace-initialized
+sandbox@my-assistant:~$ openclaw tui
+(node:1522) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:1530) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+🦞 OpenClaw 2026.3.11 (29dc654) — We ship features faster than Apple ships calculator updates.
+
+│
+◇  Doctor warnings ──────────────────────────────────────────────────────────────────────────╮
+│                                                                                            │
+│  - Telegram allowFrom contains 1 non-numeric entries (e.g. robertnemo_bot); Telegram       │
+│    authorization requires numeric sender IDs.                                              │
+│  - Run "openclaw doctor --fix" to auto-resolve @username entries to numeric IDs (requires  │
+│    a Telegram bot token).                                                                  │
+│                                                                                            │
+├────────────────────────────────────────────────────────────────────────────────────────────╯
+│
+◇  Doctor warnings ──────────────────────────────────────────────────────────────────────────╮
+│                                                                                            │
+│  - channels.telegram.groupPolicy is "allowlist" but groupAllowFrom (and allowFrom) is      │
+│    empty — all group messages will be silently dropped. Add sender IDs to                  │
+│    channels.telegram.groupAllowFrom or channels.telegram.allowFrom, or set groupPolicy to  │
+│    "open".                                                                                 │
+│                                                                                            │
+├────────────────────────────────────────────────────────────────────────────────────────────╯
+ openclaw tui - ws://127.0.0.1:18789 - agent main - session main
+
+ session agent:main:main
+
+
+ 너는 누구야
+
+
+ 안녕! 나는 OpenClaw라고 해. 너의 작업을 도와주는 AI 어시스턴트야. 아직 너에 대해 많이 모르지만, 함께 알아가면서
+ 더 잘 도와줄 수 있기를 바라.
+
+ SOUL.md에 따라, 나는 단지 수행적인 도움이 아니라 진심으로 도움이 되고 싶어. мнений도 가지고 있고, 스스로
+ 해결하려고 노력할 거야. 네가 가진 정보에 접근할 때는 게스트처럼 조심하고 존중할게.
+
+ 너는 누구라고 불러줘야 할까? 그리고 어떻게 도와주면 좋을까? timezone이나 선호하는 언어 같은 걸 알려주면 더
+ 맞춤형으로 도와줄 수 있어.
+
+
+ 나는 로버트라고 불러줘, 너는 로버트봇이야 시간은 한국시간으로 설정해줘
+
+
+ 로버트라고 불러줄게! 그리고 나는 로버트봇이야. 🤖
+
+ 시간대를 한국시간(KST, UTC+9)으로 설정했어. 이제부터는 이 시간대를 기준으로 작동할 거야.
+
+ IDENTITY.md도 업데이트해서 이름, 특징, 분위기, 이모지를 정리했어. 앞으로는 로버트봇이라고 불러줘.
+
+ 혹시 다른 설정하거나 알려주고 싶은 게 있으면 알려줘! 예를 들어 현재 작업 중인 프로젝트나 선호하는 작업 방식 같은
+ 것들 말이야. 그렇게 하면 더 맞춤형으로 도와줄 수 있어.
+
+
